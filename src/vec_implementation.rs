@@ -1,5 +1,6 @@
 use std::ops;
 
+#[derive(Debug, Copy, Clone)]
 pub struct Vec3 {
     x: f32,
     y: f32,
@@ -86,6 +87,17 @@ impl ops::Mul<Vec3> for Vec3 {
         let x = self.x * v.x;
         let y = self.y * v.y;
         let z = self.z * v.z;
+        Vec3::new(x, y, z)
+    }
+}
+
+impl ops::Mul<Vec3> for f32 {
+    type Output = Vec3;
+
+    fn mul(self, v: Vec3) -> Vec3 {
+        let x = self * v.x;
+        let y = self * v.y;
+        let z = self * v.z;
         Vec3::new(x, y, z)
     }
 }

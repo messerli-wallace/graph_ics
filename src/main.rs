@@ -3,6 +3,7 @@ use std::io::prelude::*;
 use std::io::Result;
 mod vec_implementation;
 use vec_implementation::Vec3;
+mod ray;
 
 fn write_color(buff: &mut File, pixel_color: Vec3) -> Result<()> {
     let (r, g, b) = pixel_color.destructure();
