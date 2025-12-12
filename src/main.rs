@@ -18,9 +18,13 @@ fn write_color(buff: &mut File, pixel_color: Vec3) -> Result<()> {
 fn main() -> Result<()> {
     let mut buffer = File::create("image.ppm")?;
 
-    // image
-    let image_width: u16 = 256;
-    let image_height: u16 = 256;
+    // aspect ratio calculation
+    let aspect_ratio = 16.0 / 9.0;
+    let image_width: u16 = 400;
+    let image_height: u16 = (image_width as f64 / aspect_ratio) as u16;
+    //viewport
+    let viewport_height = 2.0;
+    let viewport_width = viewport_height * (image_width as f64 / image_height as f64);
 
     // render
     let h_and_w = format!("P3\n{} {}\n255\n", image_height, image_width);
